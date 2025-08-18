@@ -35,3 +35,23 @@ def charset_size(s: str) -> int:
         any(c in DIGIT for c in s),
         any(c in SYMS for c in s),
     ]
+    return 26*sets[0] + 26*sets[1] + 10*sets[2] + 33*sets[3]
+
+
+
+def _count_sequences(s: str, rows) -> int:
+    c = 0
+    sL = s.lower()
+    for i in range(len(sL)-2):
+        chunk = sL[i:i+3]
+        for row in rows:
+            if chunk in row or chunk in row[::-1]:
+                c += 1
+                break
+    return c
+
+
+
+def keyboard_walks(s: str) -> int:
+    return _count_sequences(s, QWERTY_ROWS)
+
