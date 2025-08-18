@@ -13,3 +13,25 @@ QWERTY_ROWS = [
     "asdfghjkl",
     "zxcvbnm",
 ]
+
+
+LEET_SUBS = {
+    'a': '4@', 'e': '3', 'i': '1!', 'o': '0', 's': '5$', 't': '7'
+}
+
+
+def shannon_entropy(s: str) -> float:
+    if not s:
+        return 0.0
+    counts = Counter(s)
+    n = len(s)
+    return -sum((c/n) * math.log2(c/n) for c in counts.values())
+
+
+def charset_size(s: str) -> int:
+    sets = [
+        any(c in LOWER for c in s),
+        any(c in UPPER for c in s),
+        any(c in DIGIT for c in s),
+        any(c in SYMS for c in s),
+    ]
