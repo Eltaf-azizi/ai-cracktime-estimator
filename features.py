@@ -55,3 +55,23 @@ def _count_sequences(s: str, rows) -> int:
 def keyboard_walks(s: str) -> int:
     return _count_sequences(s, QWERTY_ROWS)
 
+
+
+def repeated_runs(s: str) -> int:
+    # aaa, 1111, !!!!
+    return len(re.findall(r'(.)\1{2,}', s))
+
+
+
+def date_like(s: str) -> int:
+    # common patterns: 1999, 2012, 12/05, 05-12
+    pats = [r'19\d{2}', r'20\d{2}', r'\b\d{2}[/-]\d{2}\b']
+    return sum(len(re.findall(p, s)) for p in pats)
+
+
+
+def leetiness(s: str) -> int:
+    sL = s.lower()
+    return sum(any(ch in LEET_SUBS.get(k, '') for ch in sL) for k in LEET_SUBS)
+
+
