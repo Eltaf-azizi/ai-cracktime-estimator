@@ -75,3 +75,37 @@ def leetiness(s: str) -> int:
     return sum(any(ch in LEET_SUBS.get(k, '') for ch in sL) for k in LEET_SUBS)
 
 
+
+
+def dict_hits(s: str, dictionary=set()):
+    sL = s.lower()
+    hits = 0
+    for w in dictionary:
+        if len(w) >= 4 and w in sL:
+            hits += 1
+    return hits
+
+
+
+def extract_features(pw: str, dictionary=set()):
+    L = len(pw)
+    cs = charset_size(pw)
+    ent = shannon_entropy(pw)
+    feats = {
+        "len": L,
+        "charset_size": cs,
+        "entropy": ent,
+        "has_lower": int(any(c in LOWER for c in pw)),
+        "has_upper": int(any(c in UPPER for c in pw)),
+        "has_digit": int(any(c in DIGIT for c in pw)),
+        "has_symbol": int(any(c in SYMS for c in pw)),
+        "keyboard_walks": keyboard_walks(pw),
+        "repeated_runs": repeated_runs(pw),
+        "date_like": date_like(pw),
+        "leetiness": leetiness(pw),
+        "unique_chars": len(set(pw)),
+        "starts_with_cap": int(len(pw) > 0 and pw[0].isupper()),
+        "ends_with_digit": int(len(pw) > 0 and pw[-1].isdigit()),
+        "dict_hits": dict_hits(pw, dictionary),
+    }
+
