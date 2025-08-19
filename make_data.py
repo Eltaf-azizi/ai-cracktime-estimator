@@ -92,3 +92,29 @@ def approx_guess_rank(pw: str, feats: dict) -> float:
     rank *= (1.0 - min(feats["entropy_per_char"], 4.0) / 10.0)
     rank *= (1.0 + (feats["charset_size"] / 100.0))
 
+
+    # Clamp
+    return max(1e3, min(rank, 1e20))
+
+
+
+def label_seconds_from_rank(rank: float, mode="offline"):
+    # guesses per second assumptions
+    GPS = 1e9 if mode == "offline" else (100 / 3600) # 100 guesses/hour online
+    return rank / GPS
+
+
+
+def synth_dataset(n=6000, mode="offline"):
+    rows = []
+    for _ in range(n):
+        pw = gen_password()
+        feats = extract_features(pw, dictionary=COMMON_WORDS)
+        rank = approx_guess_rank(pw, feats)
+        secs = label_seconds_from_rank(rank, mode=mode)
+        row = {"password": pw, "rank": rank, "seconds": secs, **feats}
+        rows.append(row)
+    df = pd.DataFrame(rows)
+    df["log10_seconds"] = df["seconds"].apply(lambda x: math.log10(max(1.0, x)))
+    return df
+
