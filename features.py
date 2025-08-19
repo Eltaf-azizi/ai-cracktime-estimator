@@ -108,4 +108,6 @@ def extract_features(pw: str, dictionary=set()):
         "ends_with_digit": int(len(pw) > 0 and pw[-1].isdigit()),
         "dict_hits": dict_hits(pw, dictionary),
     }
-
+    feats["unique_ratio"] = feats["unique_chars"] / max(1, L)
+    feats["entropy_per_char"] = ent / max(1, L)
+    return feats
