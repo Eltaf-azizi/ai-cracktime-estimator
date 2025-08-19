@@ -118,3 +118,10 @@ def synth_dataset(n=6000, mode="offline"):
     df["log10_seconds"] = df["seconds"].apply(lambda x: math.log10(max(1.0, x)))
     return df
 
+if __name__ == "__main__":
+    out = Path("train_offline.csv")
+    df = synth_dataset(n=6000, mode="offline")
+    df.to_csv(out, index=False)
+    print(f"Wrote {out} with {len(df)} rows")
+    print(df.head(5))
+
