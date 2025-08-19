@@ -64,3 +64,31 @@ def gen_password():
         return w + random.choice(["!", "", "07"])
 
 
+
+
+
+
+# Heuristic guess-order rank proxy (lower rank = earlier guessed)
+
+
+def approx_guess_rank(pw: str, feats: dict) -> float:
+    rank = 1e12 # base difficulty
+
+
+    # Early-guess patterns
+    if feats["dict_hits"] > 0:
+        rank = min(rank, 1e6)
+    if feats["ends_with_digit"] and feats["dict_hits"] > 0:
+        rank = min(rank, 5e6)
+    if feats["keyboard_walks"] > 0 or feats["repeated_runs"] > 0:
+        rank = min(rank, 2e7)
+    if feats["date_like"] > 0:
+        rank = min(rank, 3e7)
+
+
+    # Length/entropy/charset effects
+    L = feats["len"]
+    rank *= (1.0 + max(0, (L - 8)) * 0.6)
+    rank *= (1.0 - min(feats["entropy_per_char"], 4.0) / 10.0)
+    rank *= (1.0 + (feats["charset_size"] / 100.0))
+
