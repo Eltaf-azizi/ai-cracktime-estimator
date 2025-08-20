@@ -18,3 +18,21 @@ FEATURES = [
     "unique_chars", "starts_with_cap", "ends_with_digit", "dict_hits",
     "unique_ratio", "entropy_per_char"
 ]
+
+
+MODEL = joblib.load("model_offline.joblib")
+
+
+
+
+def humanize_seconds(s: float):
+    if s < 60:
+        return f"{int(s)} seconds"
+    m = s / 60
+    if m < 60:
+        return f"{m:.1f} minutes"
+    h = m / 60
+    if h < 24:
+        return f"{h:.1f} hours"
+    d = h / 24
+
