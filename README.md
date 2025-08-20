@@ -9,11 +9,16 @@ It includes a Flask web app with a simple UI to test password strength in real-t
 ## 🚀 Features
 
  - ✅ AI model trained on a synthetic password dataset
-
  - ✅ Predicts estimated crack time for any password
-
  - ✅ Flask-powered web interface
-
  - ✅ Password strength categories (Weak / Medium / Strong)
-
  - ✅ Simple & lightweight (scikit-learn + Flask)
+
+## 📂 Project Structure
+    Password-Strength-AI/
+    │── app.py              # Flask web app
+    │── train.py            # Model training script
+    │── make_data.py        # Generate synthetic dataset
+    │── model.pkl           # Saved ML model (generated after training)
+    │── requirements.txt    # Dependencies
+    │── README.md           # Project documentation
