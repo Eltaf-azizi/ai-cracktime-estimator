@@ -52,3 +52,21 @@ def humanize_seconds(s: float):
 
 
 
+
+
+def advice(feats):
+    recs = []
+
+    if feats["len"] < 12:
+        recs.append("Increase length to 14–16+ characters.")
+
+    if feats["unique_ratio"] < 0.7:
+        recs.append("Avoid repeats; add novel characters.")
+
+    if not feats["has_symbol"]:
+        recs.append("Add symbols and place them non-adjacently.")
+        
+    if not feats["has_upper"] or not feats["has_digit"]:
+        recs.append("Mix upper/lower")
+
+
