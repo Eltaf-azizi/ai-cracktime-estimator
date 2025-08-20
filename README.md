@@ -22,3 +22,26 @@ It includes a Flask web app with a simple UI to test password strength in real-t
     │── model.pkl           # Saved ML model (generated after training)
     │── requirements.txt    # Dependencies
     │── README.md           # Project documentation
+
+
+## ⚙️ Installation
+
+1. Clone the repository
+```
+git clone https://github.com/yourusername/Password-Strength-AI.git
+cd Password-Strength-AI
+```
+
+2. Create a virtual environment (recommended)
+```
+python -m venv venv
+source venv/bin/activate   # On Mac/Linux
+venv\Scripts\activate      # On Windows
+```
+
+3. Install dependencies
+```
+pip install -r requirements.txt
+```
+
+
