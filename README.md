@@ -60,3 +60,13 @@ python train.py
 
 This will create a file model.pkl that the app uses for predictions.
 
+## 🌐 Running the Web App
+
+Start the Flask app:
+```
+python app.py
+```
+
+Open your browser at http://127.0.0.1:5000/ and test your passwords.
+
+
