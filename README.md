@@ -82,3 +82,11 @@ Open your browser at http://127.0.0.1:5000/ and test your passwords.
  - scikit-learn – Machine Learning model
  - pandas / numpy – Data handling
 
+
+## 📌 Future Improvements
+
+🔹 Real-time analysis as you type
+🔹 Better datasets for stronger AI predictions
+🔹 Add visualization of crack time distribution
+🔹 Deploy online (Heroku, Render, or Vercel)
+
