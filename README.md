@@ -90,3 +90,6 @@ Open your browser at http://127.0.0.1:5000/ and test your passwords.
 🔹 Add visualization of crack time distribution
 🔹 Deploy online (Heroku, Render, or Vercel)
 
+## 🤝 Contributing
+
+Pull requests are welcome! If you’d like to improve the dataset, enhance the model, or add features, feel free to fork and contribute.
