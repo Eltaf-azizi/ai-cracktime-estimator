@@ -69,4 +69,9 @@ python app.py
 
 Open your browser at http://127.0.0.1:5000/ and test your passwords.
 
+## 📊 Example Output
+
+ - Input: `12345` → Weak, crack time < 1 second
+ - Input: `H3ll0_World!` → Medium, crack time ~1 month
+ - Input: `Th!sIsAV3ryStr0ngP@ssw0rd123` → Strong, crack time ~100+ years
 
